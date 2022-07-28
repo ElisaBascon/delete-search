@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import productData from './products.json';
+import ProductCard from './components/ProductCard';
 
 function App() {
   const [products, setProducts] = useState(productData);
@@ -28,11 +29,7 @@ function App() {
       {/* Your code goes here */}
       {products.map((elem) => {
         return (
-          <div key={elem._id}>
-            <p>{elem.name}</p>
-            <p>{elem.price}</p>
-            <button onClick={() => handleDelete(elem._id)}>❌</button>
-          </div>
+        <ProductCard key={elem._id} products={elem} onDelete={handleDelete} />
         )
       })}
     </div>
