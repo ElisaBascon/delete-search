@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function ProductCard (props) {
-    const {products: {name, price, _id}, onDelete} = props;
+    const { products: {name, price, _id}, onDelete} = props;
     
     return (
         <div>

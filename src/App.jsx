@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import productData from './products.json';
 import ProductCard from './components/ProductCard';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [products, setProducts] = useState(productData);
@@ -11,11 +12,11 @@ function App() {
     setProducts(filtered);
   }
 
-  const handleSearch = (e) => {
-    if (e.target.value === '') {
+  const handleSearch = (searchValue) => {
+    if (searchValue === '') {
       setProducts(productData)
       } else {
-        const filtered = products.filter(elem => elem.name.toLowerCase().includes(e.target.value));
+        const filtered = products.filter(elem => elem.name.toLowerCase().includes(searchValue));
         setProducts(filtered)
       }
   }
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="cart">
       <h1>My shopping cart</h1>
-      <input type="text" placeholder='Search' onChange={handleSearch} />
+      <SearchBar onSearch={handleSearch} />
 
       {/* Your code goes here */}
       {products.map((elem) => {
